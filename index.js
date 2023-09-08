@@ -19,21 +19,21 @@ app.use("/note",noteRouter);
 
 const PORT = process.env.PORT || 5000 ;
 
-// mongoose.connect(process.env.MONGO_URL)
-// .then(()=>{
-//     app.listen(PORT,()=>{
-//         console.log("Server started at port : "+ PORT);
-//     });
-// })
-// .catch((error)=>{
-//     console.log(error);
-// });
-
-
-
-app.listen(PORT,()=>{
-    console.log("Server is started");
+mongoose.connect(process.env.MONGO_URL)
+.then(()=>{
+    app.listen(PORT,()=>{
+        console.log("Server started at port : "+ PORT);
+    });
 })
+.catch((error)=>{
+    console.log(error);
+});
+
+
+
+// app.listen(PORT,()=>{
+//     console.log("Server is started");
+// })
 
 app.get("/",(req,res)=>{
     res.send("Notes api");
